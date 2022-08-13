@@ -26,6 +26,7 @@ public class SwagLabsStepsDefs {
 
     @And("verifico que exista almenos un item")
     public void verificoQueExistaAlmenosUnItem() {
+        swagLabsSteps.getExistItem();
     }
 
     @When("digito mi usuario {string} y contrasena {string}")

@@ -2,6 +2,7 @@ package com.nttdata.steps;
 
 import com.nttdata.screens.LoginScreen;
 import net.thucydides.core.annotations.Step;
+import org.junit.Assert;
 
 public class SwagLabsSteps {
 
@@ -28,5 +29,9 @@ public class SwagLabsSteps {
     @Step("validar texto")
     public void validateText(String expectedText){
       loginScreen.validateText(expectedText);
+    }
+    @Step("validar producto")
+    public void getExistItem(){
+        loginScreen.getExistItem();
     }
 }

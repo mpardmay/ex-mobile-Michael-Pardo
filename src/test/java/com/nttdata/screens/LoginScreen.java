@@ -11,19 +11,22 @@ import java.util.concurrent.TimeUnit;
 public class LoginScreen extends PageObject {
     //casilla usuario
     @AndroidFindBy(accessibility = "test-Username")
-    private WebElement username;
+    public WebElement username;
 
     //casilla contraseña
     @AndroidFindBy(accessibility = "test-Password")
-    private WebElement password;
+    public WebElement password;
 
     //boton login
     @AndroidFindBy(accessibility = "test-LOGIN")
-    private WebElement loginButon;
+    public WebElement loginButon;
 
     //obtener valor "PRODUCTS"
-    @AndroidFindBy(id = "00000000-0000-00d8-ffff-ffff00000042")
-    private WebElement validateProductText;
+    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-Cart drop zone\"]/android.view.ViewGroup/android.widget.TextView")
+    public WebElement validateProductText;
+
+    @AndroidFindBy(xpath = "(//android.view.ViewGroup[@content-desc=\"test-Item\"])[1]")
+    public WebElement existItem;
 
     public void initTest(){
         getDriver().manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
@@ -45,5 +48,15 @@ public class LoginScreen extends PageObject {
     public void validateText(String expectedText){
         String fetchedText = validateProductText.getText();
         Assert.assertEquals(expectedText, fetchedText);
+    }
+
+    public void getExistItem(){
+        boolean exist;
+        if (existItem != null) {
+            exist = true;
+        } else {
+            exist = false;
+        }
+        Assert.assertTrue(exist);
     }
 }
