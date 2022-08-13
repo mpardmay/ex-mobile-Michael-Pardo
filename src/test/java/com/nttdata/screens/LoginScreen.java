@@ -10,15 +10,15 @@ import java.util.concurrent.TimeUnit;
 
 public class LoginScreen extends PageObject {
     //casilla usuario
-    @AndroidFindBy(id = "test-Username")
+    @AndroidFindBy(accessibility = "test-Username")
     private WebElement username;
 
     //casilla contraseña
-    @AndroidFindBy(xpath = "//android.widget.EditText[@content-desc=\"test-Password\"]")
+    @AndroidFindBy(accessibility = "test-Password")
     private WebElement password;
 
     //boton login
-    @AndroidFindBy(xpath = "//android.view.ViewGroup[@content-desc=\"test-LOGIN\"]/android.widget.TextView")
+    @AndroidFindBy(accessibility = "test-LOGIN")
     private WebElement loginButon;
 
     //obtener valor "PRODUCTS"
@@ -26,10 +26,9 @@ public class LoginScreen extends PageObject {
     private WebElement validateProductText;
 
     public void initTest(){
-
+        getDriver().manage().timeouts().implicitlyWait(8, TimeUnit.SECONDS);
     }
     public void getUsername(String user){
-        getDriver().manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
         username.click();
         username.sendKeys(user);
     }

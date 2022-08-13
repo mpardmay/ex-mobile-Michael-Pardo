@@ -1,15 +1,11 @@
 package com.nttdata.steps;
 
 import com.nttdata.screens.LoginScreen;
-import com.nttdata.screens.SearchDetailsScreen;
-import com.nttdata.screens.SearchScreen;
 import net.thucydides.core.annotations.Step;
 
-public class AirbnbSearchSteps {
+public class SwagLabsSteps {
 
     LoginScreen loginScreen;
-    SearchScreen searchScreen;
-    SearchDetailsScreen searchDetailsScreen;
 
     @Step("Inicializar todo")
     public void initTest(){
@@ -28,19 +24,6 @@ public class AirbnbSearchSteps {
         loginScreen.clickLoginButon();
     }
 
-    @Step("Búsqueda por texto {0}")
-    public void searchByText(String place){
-        searchScreen.clickSearchInput();
-        searchDetailsScreen.enterSearchInput(place);
-        searchDetailsScreen.clickFirstOption();
-        searchDetailsScreen.clickNext();
-        searchDetailsScreen.clickSearch();
-    }
-
-    @Step("Obtiene el texto del resultado")
-    public String getResultText(){
-        return searchScreen.getResultText();
-    }
 
     @Step("validar texto")
     public void validateText(String expectedText){
